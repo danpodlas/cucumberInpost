@@ -16,7 +16,7 @@ public class RequestConfigurationBuilder {
                 .setContentType(ContentType.JSON);
     }
 
-    public static RequestSpecification getDefaultRequestSpecification(){
+    public static RequestSpecification getDefaultRequestSpecification() {
         return new RequestConfigurationBuilder().getRequestSpecBuilder().build();
     }
 

@@ -1,7 +1,7 @@
-package GUI.driver.manager;
+package pl.dpodlaski.GUI.driver.manager;
 
-import GUI.driver.BrowserFactory;
-import GUI.driver.BrowserType;
+import pl.dpodlaski.GUI.driver.BrowserFactory;
+import pl.dpodlaski.GUI.driver.BrowserType;
 import org.openqa.selenium.WebDriver;
 
 public class DriverManager {

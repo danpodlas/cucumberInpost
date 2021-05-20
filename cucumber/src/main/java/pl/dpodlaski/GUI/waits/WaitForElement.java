@@ -1,7 +1,8 @@
-package GUI.waits;
+package pl.dpodlaski.GUI.waits;
 
-import GUI.driver.manager.DriverManager;
+import pl.dpodlaski.GUI.driver.manager.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,7 +26,15 @@ public class WaitForElement {
     }
     public static void waitUntilElementIsVisible(By by) {
         WebDriverWait webDriverWait = getWebDriverWait();
-        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public static void waitUntilElementIsClickable(By by) {
+        WebElement element = DriverManager.getWebDriver().findElement(by);
+        ((JavascriptExecutor) DriverManager.getWebDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+
+        WebDriverWait webDriverWait = getWebDriverWait();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
 }

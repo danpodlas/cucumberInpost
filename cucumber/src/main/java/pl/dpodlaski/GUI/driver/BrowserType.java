@@ -1,4 +1,4 @@
-package GUI.driver;
+package pl.dpodlaski.GUI.driver;
 
 public enum BrowserType {
     CHROME("chrome"),

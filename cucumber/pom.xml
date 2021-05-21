@@ -89,6 +89,7 @@
             <artifactId>assertj-core</artifactId>
             <version>3.16.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>

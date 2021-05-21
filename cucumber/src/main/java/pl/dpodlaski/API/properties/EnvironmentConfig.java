@@ -1,4 +1,4 @@
-package API.properties;
+package pl.dpodlaski.API.properties;
 
 import org.aeonbits.owner.Config;
 

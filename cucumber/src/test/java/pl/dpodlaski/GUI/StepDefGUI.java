@@ -1,16 +1,17 @@
 package pl.dpodlaski.GUI;
 
-import org.apache.commons.io.FileUtils;
-import pl.dpodlaski.GUI.driver.manager.DriverManager;
-import pl.dpodlaski.GUI.driver.manager.DriverUtils;
-import pl.dpodlaski.GUI.page.*;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
+import pl.dpodlaski.GUI.driver.manager.DriverManager;
+import pl.dpodlaski.GUI.driver.manager.DriverUtils;
+import pl.dpodlaski.GUI.page.*;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -18,8 +19,6 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
 import static org.testng.AssertJUnit.assertFalse;
@@ -33,7 +32,7 @@ public class StepDefGUI {
     DetailsOfOfferPage detailsOfOffer;
     ERecruiterPage eRecruiterPage;
 
-    @Before
+    @Before("@ToTest")
     public void setUp() throws IOException {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
@@ -76,12 +75,6 @@ public class StepDefGUI {
         takeScreenshot(fileName);
 
         assertTrue(eRecruiterPage.isExistFile(fileName));
-    }
-
-    @After
-    public void tearDown() {
-        takeScreenshot();
-        DriverManager.disposeDriver();
     }
 
     @Given("Użytkownik jest na stronie głównej")
@@ -130,6 +123,12 @@ public class StepDefGUI {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @After("@ToTest")
+    public void tearDown() {
+        takeScreenshot();
+        DriverManager.disposeDriver();
     }
 
 }

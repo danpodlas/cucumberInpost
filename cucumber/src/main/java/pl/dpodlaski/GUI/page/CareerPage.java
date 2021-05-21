@@ -13,7 +13,6 @@ public class CareerPage extends Page{
     private static final By BUTTON_ACCEPT_COOKIES = By.id("onetrust-accept-btn-handler");
 
     public CareerPage clickButtonAcceptCookies() {
-        WaitForElement.waitUntilElementIsClickable(BUTTON_ACCEPT_COOKIES);
         click(BUTTON_ACCEPT_COOKIES);
 
         return new CareerPage();

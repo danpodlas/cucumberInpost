@@ -12,7 +12,7 @@ public abstract class Page {
     protected WebDriver driver = DriverManager.getWebDriver();
 
     protected void click(By by){
-        focus(by);
+        focusClickable(by);
         driver.findElement(by).click();
     }
 
@@ -31,6 +31,16 @@ public abstract class Page {
 
     protected void focus(By by){
         WaitForElement.waitUntilElementIsVisible(by);
+        WebElement element = driver.findElement(by);
+        String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
+                + "var elementTop = arguments[0].getBoundingClientRect().top;"
+                + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
+
+        ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, element);
+    }
+
+    protected void focusClickable(By by){
+        WaitForElement.waitUntilElementIsClickable(by);
         WebElement element = driver.findElement(by);
         String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
                 + "var elementTop = arguments[0].getBoundingClientRect().top;"

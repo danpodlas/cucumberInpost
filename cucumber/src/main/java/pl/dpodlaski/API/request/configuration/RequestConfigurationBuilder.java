@@ -1,4 +1,4 @@
-package API.request.configuration;
+package pl.dpodlaski.API.request.configuration;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
